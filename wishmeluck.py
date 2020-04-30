@@ -450,7 +450,7 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
     while True:
         extranonce = random.randint(0,2**32-1)
         # Update the coinbase transaction with the new extra nonce
-        coinbase_script = coinbase_message + int2lehex(extranonce, 4)
+        coinbase_script = coinbase_message + int2lehex(extranonce, 8)
         block_template['coinbasevalue'] = 1250000000
         coinbase_tx['data'] = tx_make_coinbase_p2sh(coinbase_script, address, block_template['coinbasevalue'], block_template['height'])
         coinbase_tx['hash'] = tx_compute_hash(coinbase_tx['data'])
